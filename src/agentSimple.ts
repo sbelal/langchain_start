@@ -4,8 +4,9 @@ import { SerpAPI, Calculator } from "langchain/tools";
 import { OpenAITraceModel } from "llm/OpenAITraceModel.js";
 import { settings } from "settings.js";
 
-const modelTrace = new OpenAITraceModel({openAIApiKey:settings.OpenAIApiKey, temperature:0});  
-// const model = new OpenAI({ temperature: 0, openAIApiKey: settings.OpenAIApiKey });
+
+const model = new OpenAI({ temperature: 0, openAIApiKey: settings.OpenAIApiKey });
+const modelTrace = new OpenAITraceModel(model);  
 const tools = [new SerpAPI(settings.SerpApiKey), new Calculator()];
 
 

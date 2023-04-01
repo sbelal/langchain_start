@@ -1,5 +1,4 @@
-import { CallbackManager } from "langchain/callbacks";
-import { BaseLLM, OpenAI } from "langchain/llms";
+import { BaseLLM } from "langchain/llms";
 import { LLMResult } from "langchain/schema";
 
 
@@ -29,25 +28,12 @@ export class OpenAITraceModel extends BaseLLM {
         return f()
     }
 
-
     constructor(
-        fields?: {
-            openAIApiKey?: string
-            temperature?: number
-            streaming?: boolean
-            callbackManager?: CallbackManager
-        }
+        model: BaseLLM
     ) {
-        super(fields ?? {});
-        this.model = new OpenAI(
-            {
-                temperature: fields?.temperature,
-                openAIApiKey: fields?.openAIApiKey,
-                streaming: fields?.streaming,
-                callbackManager: fields?.callbackManager
-            });
+        super({});
+        this.model = model
     }
-
 
 }
 
