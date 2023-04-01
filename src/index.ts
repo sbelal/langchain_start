@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import { OpenAI } from "langchain";
+import { settings } from "settings.js";
 
 dotenv.config();
 
@@ -7,7 +8,7 @@ console.log("Hello World!");
 console.log(process.env.OPENAI_API_KEY);
 
 const model = new OpenAI({
-  openAIApiKey: process.env.OPENAI_API_KEY,
+  openAIApiKey: settings.OpenAIApiKey,
   temperature: 0.9,
 });
 
